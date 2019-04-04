@@ -1,7 +1,7 @@
-package com.crosslight.com.crosslight.restaurant;
+package com.crosslight.restaurant;
 
-import com.crosslight.com.crosslight.core.BaseEntity;
-import com.crosslight.com.crosslight.review.Review;
+import com.crosslight.core.BaseEntity;
+import com.crosslight.review.Review;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -14,7 +14,7 @@ public class Restaurant extends BaseEntity {
 
     private String title;
     private String url;
-    @OneToMany(mappedBy = "foodGuide", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
     private List<Review> reviews;
 
     protected Restaurant() {

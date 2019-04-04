@@ -1,11 +1,12 @@
-package com.crosslight.com.crosslight.review;
+package com.crosslight.review;
 
-import com.crosslight.com.crosslight.core.BaseEntity;
-import com.crosslight.com.crosslight.restaurant.Restaurant;
+import com.crosslight.core.BaseEntity;
+import com.crosslight.restaurant.Restaurant;
+import org.springframework.stereotype.Component;
 
+import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-
-
+@Entity
 public class Review extends BaseEntity {
 
     private int rating;
