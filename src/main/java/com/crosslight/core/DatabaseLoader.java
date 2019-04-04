@@ -1,8 +1,8 @@
-package com.crosslight.com.crosslight.core;
+package com.crosslight.core;
 
-import com.crosslight.com.crosslight.restaurant.Restaurant;
-import com.crosslight.com.crosslight.restaurant.RestaurantRepository;
-import com.crosslight.com.crosslight.review.Review;
+import com.crosslight.restaurant.Restaurant;
+import com.crosslight.restaurant.RestaurantRepository;
+import com.crosslight.review.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -42,15 +42,15 @@ public class DatabaseLoader implements ApplicationRunner {
         };
 
         List<Restaurant> bunchOfRestaurants = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
+        IntStream.range(0, 100).forEach(i -> {
             String template = templates[i % templates.length];
             String reviewedItem = reviewedItems[i % reviewedItems.length];
             String title = String.format(template, reviewedItem);
             Restaurant r = new Restaurant(title, "http://crosslight.com");
             r.addReview(new Review(i % 5, String.format("More %s please!", reviewedItem)));
             bunchOfRestaurants.add(r);
-        }
+        });
 
-        restaurants.save(bunchOfRestaurants);
+        restaurants.saveAll(bunchOfRestaurants);
     }
 }
